@@ -3,8 +3,8 @@ export type Language = 'it' | 'en';
 export interface Translation {
   name: string;
   description: string;
-  attacks?: { name: string; description: string; impact: string; mitigation_strategy: string; type?: string; severity?: 'low' | 'medium' | 'high'; didactic_tip?: string }[];
-  defenses?: { name: string; description: string; method: string; type?: string; priority?: 'preventive' | 'detective' | 'corrective'; didactic_tip?: string }[];
+  attacks?: { name: string; description: string; impact: string; mitigation_strategy: string }[];
+  defenses?: { name: string; description: string; method: string }[];
   protocols?: string[];
 }
 
