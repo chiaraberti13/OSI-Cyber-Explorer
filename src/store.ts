@@ -33,6 +33,9 @@ interface AppState {
   
   selectedProtocol: 'HTTP' | 'PING';
   setSelectedProtocol: (protocol: 'HTTP' | 'PING') => void;
+
+  detailTab: 'overview' | 'attacks' | 'defenses';
+  setDetailTab: (tab: 'overview' | 'attacks' | 'defenses') => void;
   
   isPaused: boolean;
   setIsPaused: (isPaused: boolean) => void;
@@ -80,4 +83,7 @@ export const useStore = create<AppState>((set) => ({
 
   isPaused: false,
   setIsPaused: (isPaused) => set({ isPaused }),
+
+  detailTab: 'overview',
+  setDetailTab: (detailTab) => set({ detailTab }),
 }));
