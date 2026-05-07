@@ -291,18 +291,21 @@ export default function PacketSimulator() {
            <div className="flex items-center gap-4">
              <div className="flex items-center gap-3">
                <span className="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">{labels.attack}</span>
-               <select 
+               <select
                  value={activeAttack}
                  onChange={(e) => setActiveAttack(e.target.value as any)}
                  className="bg-zinc-950 text-red-500/70 text-[9px] font-bold border border-red-900/20 rounded-lg px-2 py-1.5 outline-none cursor-pointer hover:border-red-500/40 transition-all font-mono"
                >
                  <option value="none">{labels.none.toUpperCase()}</option>
-                 <option value="mitm">MITM</option>
-                 <option value="dos">DDOS</option>
-                 <option value="spoofing">SPOOFING</option>
+                 <option value="mitm">MITM (L2/L3)</option>
+                 <option value="dos">DDoS (L4/L7)</option>
+                 <option value="spoofing">IP SPOOFING (L3)</option>
+                 <option value="replay">REPLAY (L5)</option>
+                 <option value="eavesdropping">EAVESDROP (L1)</option>
+                 <option value="injection">INJECTION (L7)</option>
                </select>
              </div>
-             
+
              <button
                onClick={() => setDefenseEnabled(!defenseEnabled)}
                className={`text-[9px] font-bold border rounded-lg px-3 py-1.5 transition-all ${defenseEnabled ? 'bg-emerald-500/5 text-emerald-500 border-emerald-500/20' : 'bg-zinc-950 text-zinc-600 border-zinc-800'}`}
@@ -339,7 +342,7 @@ export default function PacketSimulator() {
                {simulationState === 'encapsulating' && 'PACKET_FORMATION_v1'}
                {simulationState === 'decapsulating' && 'PACKET_STRIPPING_v1'}
                {simulationState === 'idle' && 'WAITING_FOR_DATA'}
-               {simulationState === 'interrupted' && 'FLOW_COMPROMISED'}
+               {simulationState === 'interrupted' && `FLOW_COMPROMISED [${activeAttack.toUpperCase()}]`}
             </span>
           </div>
           {simulationState !== 'idle' && (

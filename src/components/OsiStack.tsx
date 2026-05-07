@@ -45,7 +45,10 @@ export default function OsiStack() {
         const isTargeted = simulationState === 'interrupted' && (
           (activeAttack === 'mitm' && (layer.id === 2 || layer.id === 3)) ||
           (activeAttack === 'dos' && (layer.id === 7 || layer.id === 4)) ||
-          (activeAttack === 'spoofing' && layer.id === 3)
+          (activeAttack === 'spoofing' && layer.id === 3) ||
+          (activeAttack === 'replay' && layer.id === 5) ||
+          (activeAttack === 'eavesdropping' && layer.id === 1) ||
+          (activeAttack === 'injection' && layer.id === 7)
         );
         const layerInfo = layer.translations[language];
 
