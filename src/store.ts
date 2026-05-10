@@ -17,6 +17,22 @@ interface AppState {
   activeAttack: AttackType;
   setActiveAttack: (attack: AttackType) => void;
   
+  activeScenarioId: string | null;
+  setActiveScenarioId: (id: string | null) => void;
+  
+  isGlossaryOpen: boolean;
+  setIsGlossaryOpen: (open: boolean) => void;
+
+  isGuideOpen: boolean;
+  setIsGuideOpen: (open: boolean) => void;
+
+  isQuizOpen: boolean;
+  setIsQuizOpen: (open: boolean) => void;
+  
+  quizScore: number;
+  incrementQuizScore: () => void;
+  resetQuizScore: () => void;
+  
   defenseEnabled: boolean;
   setDefenseEnabled: (enabled: boolean) => void;
   
@@ -31,18 +47,21 @@ interface AppState {
   currentStep: number;
   setCurrentStep: (step: number) => void;
   
-  selectedProtocol: 'HTTP' | 'PING';
-  setSelectedProtocol: (protocol: 'HTTP' | 'PING') => void;
+  selectedProtocol: 'HTTP' | 'DNS' | 'BGP' | 'SSH' | 'FTP' | 'SMTP';
+  setSelectedProtocol: (protocol: 'HTTP' | 'DNS' | 'BGP' | 'SSH' | 'FTP' | 'SMTP') => void;
 
-  detailTab: 'overview' | 'attacks' | 'defenses';
-  setDetailTab: (tab: 'overview' | 'attacks' | 'defenses') => void;
+  detailTab: 'overview' | 'attacks' | 'defenses' | 'security';
+  setDetailTab: (tab: 'overview' | 'attacks' | 'defenses' | 'security') => void;
   
+  hasSimulated: boolean;
+  setHasSimulated: (has: boolean) => void;
+
   isPaused: boolean;
   setIsPaused: (isPaused: boolean) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
-  language: 'en',
+  language: 'it',
   setLanguage: (language) => set({ language }),
   
   selectedLayerId: 7,
@@ -52,10 +71,29 @@ export const useStore = create<AppState>((set) => ({
   setViewMode: (viewMode) => set({ viewMode }),
   
   simulationState: 'idle',
-  setSimulationState: (simulationState) => set({ simulationState }),
+  setSimulationState: (simulationState) => set((state) => ({ 
+    simulationState,
+    hasSimulated: simulationState !== 'idle' ? true : state.hasSimulated
+  })),
   
   activeAttack: 'none',
   setActiveAttack: (activeAttack) => set({ activeAttack }),
+  
+  activeScenarioId: null,
+  setActiveScenarioId: (activeScenarioId) => set({ activeScenarioId }),
+  
+  isGlossaryOpen: false,
+  setIsGlossaryOpen: (isGlossaryOpen) => set({ isGlossaryOpen }),
+
+  isGuideOpen: false,
+  setIsGuideOpen: (isGuideOpen) => set({ isGuideOpen }),
+
+  isQuizOpen: false,
+  setIsQuizOpen: (isQuizOpen) => set({ isQuizOpen }),
+  
+  quizScore: 0,
+  incrementQuizScore: () => set((state) => ({ quizScore: state.quizScore + 1 })),
+  resetQuizScore: () => set({ quizScore: 0 }),
   
   defenseEnabled: false,
   setDefenseEnabled: (defenseEnabled) => set({ defenseEnabled }),
@@ -83,6 +121,9 @@ export const useStore = create<AppState>((set) => ({
 
   isPaused: false,
   setIsPaused: (isPaused) => set({ isPaused }),
+
+  hasSimulated: false,
+  setHasSimulated: (hasSimulated) => set({ hasSimulated }),
 
   detailTab: 'overview',
   setDetailTab: (detailTab) => set({ detailTab }),

@@ -4,11 +4,13 @@ export type Severity = 'low' | 'medium' | 'high' | 'critical';
 
 export interface Attack {
   name: string;
+  type?: AttackType;
   description: string;
   howItWorks: string;
   impact: string;
   mitigation_strategy: string;
   severity: Severity;
+  protocols?: string[];
 }
 
 export interface Defense {
@@ -16,11 +18,14 @@ export interface Defense {
   description: string;
   method: string;
   counters?: string[];
+  protocols?: string[];
 }
 
 export interface Translation {
   name: string;
   description: string;
+  responsibilities?: string[];
+  useCases?: string[];
   keyFacts?: string[];
   attacks?: Attack[];
   defenses?: Defense[];
@@ -53,4 +58,14 @@ export interface LogEntry {
 }
 
 export type SimulationState = 'idle' | 'encapsulating' | 'decapsulating' | 'interrupted';
-export type AttackType = 'mitm' | 'dos' | 'injection' | 'spoofing' | 'replay' | 'eavesdropping' | 'none';
+export type AttackType = 'mitm' | 'dos' | 'injection' | 'spoofing' | 'replay' | 'eavesdropping' | 'bruteforce' | 'malware' | 'none';
+
+export interface AttackScenario {
+  id: string;
+  name: { it: string; en: string };
+  description: { it: string; en: string };
+  recommendedDefense: { it: string; en: string };
+  targetLayer: number;
+  attackType: AttackType;
+  defenseEnabled?: boolean;
+}
