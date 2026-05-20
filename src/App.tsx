@@ -11,11 +11,22 @@ import Terminal from './components/Terminal';
 import { motion } from 'motion/react';
 import GuideModal from './components/GuideModal';
 import GlossaryModal from './components/GlossaryModal';
+import PortsModal from './components/PortsModal';
 import QuizModal from './components/QuizModal';
 import { useStore } from './store';
 
 export default function App() {
-  const { isGlossaryOpen, setIsGlossaryOpen, isGuideOpen, setIsGuideOpen, isQuizOpen, setIsQuizOpen, language } = useStore();
+  const { 
+    isGlossaryOpen, 
+    setIsGlossaryOpen, 
+    isPortsOpen,
+    setIsPortsOpen,
+    isGuideOpen, 
+    setIsGuideOpen, 
+    isQuizOpen, 
+    setIsQuizOpen, 
+    language 
+  } = useStore();
 
   return (
     <div className="min-h-screen bg-white text-slate-800 selection:bg-blue-500/10">
@@ -83,6 +94,10 @@ export default function App() {
       <GlossaryModal 
         isOpen={isGlossaryOpen} 
         onClose={() => setIsGlossaryOpen(false)} 
+      />
+      <PortsModal 
+        isOpen={isPortsOpen} 
+        onClose={() => setIsPortsOpen(false)} 
       />
       <QuizModal 
         isOpen={isQuizOpen} 

@@ -23,6 +23,9 @@ interface AppState {
   isGlossaryOpen: boolean;
   setIsGlossaryOpen: (open: boolean) => void;
 
+  isPortsOpen: boolean;
+  setIsPortsOpen: (open: boolean) => void;
+
   isGuideOpen: boolean;
   setIsGuideOpen: (open: boolean) => void;
 
@@ -84,6 +87,9 @@ export const useStore = create<AppState>((set) => ({
   
   isGlossaryOpen: false,
   setIsGlossaryOpen: (isGlossaryOpen) => set({ isGlossaryOpen }),
+
+  isPortsOpen: false,
+  setIsPortsOpen: (isPortsOpen) => set({ isPortsOpen }),
 
   isGuideOpen: false,
   setIsGuideOpen: (isGuideOpen) => set({ isGuideOpen }),

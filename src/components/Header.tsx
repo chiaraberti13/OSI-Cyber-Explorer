@@ -1,5 +1,5 @@
 import { useStore } from '../store';
-import { Languages, HelpCircle, BookOpen, GraduationCap, Trophy } from 'lucide-react';
+import { Languages, HelpCircle, BookOpen, GraduationCap, Trophy, Hash } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function Header() {
@@ -8,6 +8,8 @@ export default function Header() {
     setLanguage, 
     isGlossaryOpen, 
     setIsGlossaryOpen, 
+    isPortsOpen,
+    setIsPortsOpen,
     isGuideOpen, 
     setIsGuideOpen,
     isQuizOpen,
@@ -74,6 +76,18 @@ export default function Header() {
             >
               <BookOpen className="w-3.5 h-3.5" />
               {language === 'en' ? 'Glossary' : 'Glossario'}
+            </button>
+
+            <button
+              onClick={() => setIsPortsOpen(true)}
+              className={`flex items-center gap-2 px-3 py-1.5 border rounded-lg text-[10px] font-bold transition-all uppercase tracking-widest ${
+                isPortsOpen 
+                  ? 'bg-indigo-600 border-indigo-700 text-white shadow-sm' 
+                  : 'bg-white border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-300 shadow-sm'
+              }`}
+            >
+              <Hash className="w-3.5 h-3.5" />
+              {language === 'en' ? 'Ports' : 'Porte'}
             </button>
           </div>
 
