@@ -61,6 +61,9 @@ interface AppState {
 
   isPaused: boolean;
   setIsPaused: (isPaused: boolean) => void;
+
+  activeView: 'osi' | 'ports' | 'security' | 'glossary' | 'quiz';
+  setActiveView: (view: 'osi' | 'ports' | 'security' | 'glossary' | 'quiz') => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -133,4 +136,7 @@ export const useStore = create<AppState>((set) => ({
 
   detailTab: 'overview',
   setDetailTab: (detailTab) => set({ detailTab }),
+
+  activeView: 'osi',
+  setActiveView: (activeView) => set({ activeView }),
 }));

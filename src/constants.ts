@@ -1601,7 +1601,7 @@ export const OSI_LAYERS: LayerData[] = [
 export const ATTACK_SCENARIOS: AttackScenario[] = [
   {
     id: 'l1-jamming',
-    name: { en: 'L1: Signal Jamming', it: 'L1: Disturbo del Segnale' },
+    name: { en: 'Signal Jamming', it: 'Disturbo del Segnale' },
     description: { en: 'Physical layer attack that blocks wireless communication via noise.', it: 'Attacco al livello Fisico che blocca le comunicazioni wireless tramite rumore.' },
     recommendedDefense: { en: 'Shielding, dynamic frequency hopping, or directional antennas.', it: 'Schermatura, frequency hopping dinamico o antenne direzionali.' },
     targetLayer: 1,
@@ -1610,7 +1610,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l1-tapping',
-    name: { en: 'L1: Physical Tapping', it: 'L1: Intercettazione Fisica' },
+    name: { en: 'Physical Tapping', it: 'Intercettazione Fisica' },
     description: { en: 'Splicing into a cable to intercept electrical signals.', it: 'Intercettazione di un cavo per catturare segnali elettrici.' },
     recommendedDefense: { en: 'Physical security of cabling, use of fiber optics (harder to tap).', it: 'Sicurezza fisica del cablaggio, uso della fibra ottica (difficile da intercettare).' },
     targetLayer: 1,
@@ -1619,7 +1619,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l2-mitm',
-    name: { en: 'L2: ARP Poisoning MITM', it: 'L2: ARP Poisoning MITM' },
+    name: { en: 'ARP Poisoning MITM', it: 'ARP Poisoning MITM' },
     description: { en: 'Intercepting local traffic by poisoning the ARP cache.', it: 'Intercettazione del traffico locale avvelenando la cache ARP.' },
     recommendedDefense: { en: 'Dynamic ARP Inspection (DAI) on managed switches.', it: 'Dynamic ARP Inspection (DAI) su switch gestiti.' },
     targetLayer: 2,
@@ -1628,7 +1628,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l2-mac-flood',
-    name: { en: 'L2: MAC Flooding', it: 'L2: MAC Flooding' },
+    name: { en: 'MAC Flooding', it: 'MAC Flooding' },
     description: { en: 'Filling the switch CAM table to force fail-open mode.', it: 'Riempimento della tabella CAM dello switch per forzare il fail-open.' },
     recommendedDefense: { en: 'Port Security with limit on MAC address count per port.', it: 'Port Security con limite sul numero di indirizzi MAC per porta.' },
     targetLayer: 2,
@@ -1637,7 +1637,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l2-dhcp-starve',
-    name: { en: 'L2: DHCP Starvation', it: 'L2: DHCP Starvation' },
+    name: { en: 'DHCP Starvation', it: 'DHCP Starvation' },
     description: { en: 'Exhausting the DHCP pool to deny access to new clients.', it: 'Esaurimento del pool DHCP per negare l\'accesso ai nuovi client.' },
     recommendedDefense: { en: 'DHCP Snooping and Port Security.', it: 'DHCP Snooping e Port Security.' },
     targetLayer: 2,
@@ -1646,7 +1646,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l3-spoofing',
-    name: { en: 'L3: IP Spoofing', it: 'L3: IP Spoofing' },
+    name: { en: 'IP Spoofing', it: 'IP Spoofing' },
     description: { en: 'Sending packets with forged source IP addresses.', it: 'Invio di pacchetti con indirizzi IP sorgente contraffatti.' },
     recommendedDefense: { en: 'Ingress/Egress filtering (Unicast RPF) at router level.', it: 'Filtraggio Ingress/Egress (Unicast RPF) a livello router.' },
     targetLayer: 3,
@@ -1655,7 +1655,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l3-smurf',
-    name: { en: 'L3: ICMP Smurf', it: 'L3: ICMP Smurf' },
+    name: { en: 'ICMP Smurf', it: 'ICMP Smurf' },
     description: { en: 'Amplifying a DoS attack using broadcast ICMP echoes.', it: 'Amplificazione di un DoS usando echo ICMP broadcast.' },
     recommendedDefense: { en: 'Disabling IP directed broadcasts on router interfaces.', it: 'Uso di firewall per bloccare echo ICMP broadcast.' },
     targetLayer: 3,
@@ -1664,7 +1664,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l3-frag',
-    name: { en: 'L3: IP Fragmentation', it: 'L3: Frammentazione IP' },
+    name: { en: 'IP Fragmentation', it: 'Frammentazione IP' },
     description: { en: 'Overlapping packets to bypass firewalls or crash systems.', it: 'Pacchetti sovrapposti per bypassare firewall o crashare sistemi.' },
     recommendedDefense: { en: 'Stateful firewall with fragment reassembly and inspection.', it: 'Firewall stateful con riassemblaggio e ispezione dei frammenti.' },
     targetLayer: 3,
@@ -1673,7 +1673,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l4-dos',
-    name: { en: 'L4: TCP SYN Flood', it: 'L4: TCP SYN Flood' },
+    name: { en: 'TCP SYN Flood', it: 'TCP SYN Flood' },
     description: { en: 'Exhausting server resources with incomplete handshakes.', it: 'Esaurimento delle risorse del server con handshake incompleti.' },
     recommendedDefense: { en: 'SYN Cookies, rate limiting, or reverse proxies.', it: 'SYN Cookies, limitazione del rate o reverse proxy.' },
     targetLayer: 4,
@@ -1682,7 +1682,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l4-udp-flood',
-    name: { en: 'L4: UDP Flood', it: 'L4: UDP Flood' },
+    name: { en: 'UDP Flood', it: 'UDP Flood' },
     description: { en: 'Overwhelming a target with high-volume UDP traffic.', it: 'Travolgere un target con un alto volume di traffico UDP.' },
     recommendedDefense: { en: 'Anycast DDoS mitigation and high-capacity firewalls.', it: 'Mitigazione DDoS Anycast e firewall ad alta capacità.' },
     targetLayer: 4,
@@ -1691,7 +1691,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l4-scan',
-    name: { en: 'L4: Port Scanning', it: 'L4: Port Scanning' },
+    name: { en: 'Port Scanning', it: 'Port Scanning' },
     description: { en: 'Probing ports to find vulnerable services.', it: 'Sondaggio delle porte per trovare servizi vulnerabili.' },
     recommendedDefense: { en: 'Intrusion Detection Systems (IDS) and strict firewall rules.', it: 'Sistemi di rilevamento intrusioni (IDS) e regole firewall severe.' },
     targetLayer: 4,
@@ -1700,7 +1700,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l5-replay',
-    name: { en: 'L5: Replay Attack', it: 'L5: Attacco di Replay' },
+    name: { en: 'Replay Attack', it: 'Attacco di Replay' },
     description: { en: 'Intercepting and re-sending a valid session token.', it: 'Intercettazione e reinvio di un token di sessione valido.' },
     recommendedDefense: { en: 'Anti-replay counters, one-time nonces, and TLS.', it: 'Contatori anti-replay, nonce usa e getta e TLS.' },
     targetLayer: 5,
@@ -1709,7 +1709,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l5-hijacking',
-    name: { en: 'L5: Session Hijacking', it: 'L5: Session Hijacking' },
+    name: { en: 'Session Hijacking', it: 'Session Hijacking' },
     description: { en: 'Taking over an active authenticated user session.', it: 'Acquisizione di una sessione utente autenticata attiva.' },
     recommendedDefense: { en: 'Secure session tokens, HSTS, and multi-factor auth.', it: 'Token di sessione sicuri, HSTS e autenticazione a più fattori.' },
     targetLayer: 5,
@@ -1718,7 +1718,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l6-oracle',
-    name: { en: 'L6: Padding Oracle', it: 'L6: Padding Oracle' },
+    name: { en: 'Padding Oracle', it: 'Padding Oracle' },
     description: { en: 'Exploiting encryption padding to decrypt messages.', it: 'Sfruttare il padding della cifratura per decifrare messaggi.' },
     recommendedDefense: { en: 'Authenticated encryption (AES-GCM) and generic error messages.', it: 'Crittografia autenticata (AES-GCM) e messaggi di errore generici.' },
     targetLayer: 6,
@@ -1727,7 +1727,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-injection',
-    name: { en: 'L7: SQL Injection', it: 'L7: SQL Injection' },
+    name: { en: 'SQL Injection', it: 'SQL Injection' },
     description: { en: 'Injecting malicious SQL code into web applications.', it: 'Iniezione di codice SQL malevolo nelle applicazioni web.' },
     recommendedDefense: { en: 'Input validation, parameterized queries, and Web Application Firewalls (WAF).', it: 'Validazione input, query parametrizzate e Web Application Firewall (WAF).' },
     targetLayer: 7,
@@ -1736,7 +1736,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-xss',
-    name: { en: 'L7: Cross-Site Scripting (XSS)', it: 'L7: Cross-Site Scripting (XSS)' },
+    name: { en: 'Cross-Site Scripting (XSS)', it: 'Cross-Site Scripting (XSS)' },
     description: { en: 'Injecting malicious scripts into web pages viewed by users.', it: 'Iniezione di script malevoli nelle pagine web caricate dagli utenti.' },
     recommendedDefense: { en: 'Content Security Policy (CSP) and strict output encoding.', it: 'Content Security Policy (CSP) e codifica rigorosa dell\'output.' },
     targetLayer: 7,
@@ -1745,7 +1745,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-homograph',
-    name: { en: 'L7: Homograph Phishing', it: 'L7: Phishing Omografico' },
+    name: { en: 'Homograph Phishing', it: 'Phishing Omografico' },
     description: { en: 'Using visually identical characters to mimic domains.', it: 'Uso di caratteri visivamente identici per imitare domini.' },
     recommendedDefense: { en: 'Browser punycode protection and user awareness training.', it: 'Protezione punycode nei browser e formazione degli utenti.' },
     targetLayer: 7,
@@ -1754,7 +1754,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-dns-poison',
-    name: { en: 'L7: DNS Cache Poisoning', it: 'L7: Avvelenamento Cache DNS' },
+    name: { en: 'DNS Cache Poisoning', it: 'Avvelenamento Cache DNS' },
     description: { en: 'Redirecting users to malicious sites by corrupting DNS resolver cache.', it: 'Reindirizzamento degli utenti verso siti malevoli corrompendo la cache del resolver DNS.' },
     recommendedDefense: { en: 'Implementing DNSSEC and high-entropy transaction IDs.', it: 'Implementazione di DNSSEC e ID di transazione ad alta entropia.' },
     targetLayer: 7,
@@ -1763,7 +1763,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-slowloris',
-    name: { en: 'L7: Slowloris HTTP DoS', it: 'L7: Slowloris HTTP DoS' },
+    name: { en: 'Slowloris HTTP DoS', it: 'Slowloris HTTP DoS' },
     description: { en: 'Keeping many HTTP connections open by sending partial requests slowly.', it: 'Mantenimento di molte connessioni HTTP aperte inviando richieste parziali lentamente.' },
     recommendedDefense: { en: 'Limiting concurrent connections and using reverse proxies.', it: 'Limitazione delle connessioni simultanee e uso di reverse proxy.' },
     targetLayer: 7,
@@ -1772,7 +1772,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l4-tcp-reset',
-    name: { en: 'L4: TCP Reset Attack', it: 'L4: Attacco TCP Reset' },
+    name: { en: 'TCP Reset Attack', it: 'Attacco TCP Reset' },
     description: { en: 'Killing a TCP session by injecting a spoofed RST packet.', it: 'Terminare una sessione TCP iniettando un pacchetto RST contraffatto.' },
     recommendedDefense: { en: 'Encryption (TLS) and harder-to-predict sequence numbers.', it: 'Crittografia (TLS) e numeri di sequenza difficili da predire.' },
     targetLayer: 4,
@@ -1781,7 +1781,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l3-pod',
-    name: { en: 'L3: Ping of Death', it: 'L3: Ping of Death' },
+    name: { en: 'Ping of Death', it: 'Ping of Death' },
     description: { en: 'Sending oversized or malformed ICMP packets to crash systems.', it: 'Invio di pacchetti ICMP sovradimensionati o malformati per crashare i sistemi.' },
     recommendedDefense: { en: 'Modern OS patches and ICMP size filtering on routers.', it: 'Patch per OS moderni e filtraggio delle dimensioni ICMP sui router.' },
     targetLayer: 3,
@@ -1790,7 +1790,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l3-bgp-hijack',
-    name: { en: 'L3: BGP Hijacking', it: 'L3: BGP Hijacking' },
+    name: { en: 'BGP Hijacking', it: 'BGP Hijacking' },
     description: { en: 'Redirecting global internet traffic by announcing false IP prefixes.', it: 'Reindirizzamento del traffico internet globale annunciando prefissi IP falsi.' },
     recommendedDefense: { en: 'Deploying RPKI and BGPsec for route validation.', it: 'Distribuzione di RPKI e BGPsec per la validazione delle rotte.' },
     targetLayer: 7,
@@ -1799,7 +1799,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-ssh-brute',
-    name: { en: 'L7: SSH Brute Force', it: 'L7: Forza Bruta SSH' },
+    name: { en: 'SSH Brute Force', it: 'Forza Bruta SSH' },
     description: { en: 'Attempting thousands of password combinations to gain remote access.', it: 'Tentativo di migliaia di combinazioni di password per ottenere accesso remoto.' },
     recommendedDefense: { en: 'Implementation of Fail2Ban or PubKey Authentication.', it: 'Implementazione di Fail2Ban o Autenticazione a Chiave Pubblica.' },
     targetLayer: 7,
@@ -1808,7 +1808,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-smtp-relay',
-    name: { en: 'L7: SMTP Open Relay', it: 'L7: SMTP Open Relay' },
+    name: { en: 'SMTP Open Relay', it: 'SMTP Open Relay' },
     description: { en: 'Exploiting misconfigured mail servers to send unauthorized spam.', it: 'Sfruttamento di server di posta mal configurati per inviare spam non autorizzato.' },
     recommendedDefense: { en: 'Closing open relays and implementing SPF/DKIM.', it: 'Chiusura degli open relay e implementazione di SPF/DKIM.' },
     targetLayer: 7,
@@ -1817,7 +1817,7 @@ export const ATTACK_SCENARIOS: AttackScenario[] = [
   },
   {
     id: 'l7-ftp-sniffing',
-    name: { en: 'L7: FTP Cleartext Sniffing', it: 'L7: Sniffing FTP in Chiaro' },
+    name: { en: 'FTP Cleartext Sniffing', it: 'Sniffing FTP in Chiaro' },
     description: { en: 'Capturing credentials sent in unencrypted FTP packets.', it: 'Cattura di credenziali inviate in pacchetti FTP non crittografati.' },
     recommendedDefense: { en: 'Using FTPS or SFTP (Secure FTP) for encrypted transfers.', it: 'Uso di FTPS o SFTP per trasferimenti crittografati.' },
     targetLayer: 7,
@@ -1994,10 +1994,87 @@ export const QUIZ_QUESTIONS = [
       { en: "ICMP", it: "ICMP" }
     ],
     correctAnswer: 2
+  },
+  {
+    id: 13,
+    question: {
+      en: "Which EAP (Extensible Authentication Protocol) method is considered the most secure by requiring digital certificates on both the client and the server?",
+      it: "Quale metodo EAP (Extensible Authentication Protocol) è considerato il più sicuro poiché richiede certificati digitali sia sul client che sul server?"
+    },
+    options: [
+      { en: "EAP-MD5 (Weak password hash)", it: "EAP-MD5 (Hash password debole)" },
+      { en: "EAP-PEAP (Server cert + password inside tunnel)", it: "EAP-PEAP (Certificato server + password nel tunnel)" },
+      { en: "EAP-TLS (Dual certificate verification)", it: "EAP-TLS (Certificati digitali su ambo i lati)" },
+      { en: "EAP-FAST (Cisco Shared PAC tunnel)", it: "EAP-FAST (Tunnel Cisco con chiave PAC)" }
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 14,
+    question: {
+      en: "What is a major administrative difference between RADIUS and TACACS+ protocols?",
+      it: "Qual è una delle principali differenze amministrative tra i protocolli RADIUS e TACACS+?"
+    },
+    options: [
+      { en: "RADIUS uses reliable TCP while TACACS+ uses speed-centric UDP", it: "RADIUS usa TCP con connessione affidabile mentre TACACS+ usa UDP per la velocità" },
+      { en: "TACACS+ completely encrypts the packet payload body and separates AAA, whereas RADIUS encrypts only the password and combines Auth/Authz", it: "TACACS+ cifra interamente l'intero corpo del payload e separa le funzioni AAA, mentre RADIUS cifra solo la password e unisce Autenticazione/Autorizzazione" },
+      { en: "RADIUS is Cisco-proprietary, while TACACS+ is an open standard suited for general client access", it: "RADIUS è un protocollo proprietario Cisco, mentre TACACS+ è uno standard aperto per l'accesso client classico" },
+      { en: "TACACS+ operates at the Physical layer (L1) while RADIUS operates at the Session layer (L5)", it: "TACACS+ opera a livello Fisico (L1) mentre RADIUS opera a livello Sessione (L5)" }
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 15,
+    question: {
+      en: "Why is DTLS (Datagram Transport Layer Security) often preferred over TLS inside VPN client products?",
+      it: "Perché il DTLS (Datagram Transport Layer Security) è spesso preferito al TLS all'interno delle VPN client?"
+    },
+    options: [
+      { en: "It completely skips packet integrity hashing verification steps", it: "Salta completamente i controlli di integrità del pacchetto" },
+      { en: "It integrates directly into physical fiber optic couplers", it: "Si integra direttamente nei connettori fisici in fibra ottica" },
+      { en: "It encapsulates data over UDP, preventing latency spikes and TCP-in-TCP retransmission loops of nested tunnels", it: "Invia i dati su UDP, eliminando la latenza e i loop di re-invio causati dal sovrapporre un protocollo TCP sopra un altro (TCP-in-TCP)" },
+      { en: "It acts purely as a routing mechanism and cannot encrypt", it: "Agisce puramente come organo di routing e non esegue cifratura" }
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 16,
+    question: {
+      en: "Which IPsec operational mode encrypts the entire original IP packet and appends a completely new IP header, preferred in Site-to-Site VPNs?",
+      it: "Quale modalità operativa di IPsec cifra l'intero pacchetto IP originario e aggiunge una nuova intestazione IP, preferita nelle VPN Site-to-Site?"
+    },
+    options: [
+      { en: "Transport Mode (Encrypts payload only)", it: "Modalità Trasporto (Cifra solo il payload)" },
+      { en: "Tunnel Mode (Encrypts whole packet + new IP header)", it: "Modalità Tunnel (Cifra l'intero pacchetto + nuovo header IP)" },
+      { en: "Pass-Through Mode (No active payload encryption)", it: "Modalità Passante (Nessuna cifratura attiva)" },
+      { en: "Gateway Mode (Compresses header without signatures)", it: "Modalità Gateway (Comprime l'intestazione senza firma)" }
+    ],
+    correctAnswer: 1
   }
 ];
 
 export const GLOSSARY_TERMS = [
+  {
+    term: 'DTLS',
+    definition: {
+      en: 'Datagram Transport Layer Security - A communications protocol based on TLS designed to secure datagram-based (UDP) transmissions safely and efficiently.',
+      it: 'Datagram Transport Layer Security - Un protocollo basato su TLS ma adattato per proteggere comunicazioni basate su datagrammi (UDP), preservando la velocità senza colli di bottiglia.'
+    }
+  },
+  {
+    term: 'IPsec',
+    definition: {
+      en: 'Internet Protocol Security - A suite of secure network-layer (L3) protocols (ESP, AH, IKE) that encrypt and authenticate all IP packets, widely used to connect site-to-site office VPN tunnels.',
+      it: 'Internet Protocol Security - Una suite di protocolli di livello Network (ESP, AH, IKE) che cifra e autentica pacchetti IP. È lo standard di riferimento per unire sedi aziendali via VPN.'
+    }
+  },
+  {
+    term: 'VPN',
+    definition: {
+      en: 'Virtual Private Network - A technology that creates an encrypted logical tunnel over public, untrusted transport networks, making remote clients access local office LAN assets safely.',
+      it: 'Virtual Private Network - Una tecnologia che stabilisce un canale logico cifrato sopra reti pubbliche insicure, consentendo a computer remoti di agire come se fossero fisicamente connessi in ufficio.'
+    }
+  },
   {
     term: 'PDU',
     definition: {
@@ -2185,6 +2262,202 @@ export const GLOSSARY_TERMS = [
     definition: {
       en: 'Simple Mail Transfer Protocol - A communication protocol for electronic mail transmission.',
       it: 'Simple Mail Transfer Protocol - Un protocollo di comunicazione per la trasmissione di posta elettronica.'
+    }
+  },
+  {
+    term: 'IDS',
+    definition: {
+      en: 'Intrusion Detection System - A device or software application that monitors a network or systems for malicious activity or policy violations.',
+      it: 'Sistema di Rilevamento delle Intrusioni - Un dispositivo o software che monitora una rete o sistemi alla ricerca di attività dannose o violazioni delle policy.'
+    }
+  },
+  {
+    term: 'IPS',
+    definition: {
+      en: 'Intrusion Prevention System - A network security tool that monitors network traffic to detect and actively block or prevent malicious activities.',
+      it: 'Sistema di Prevenzione delle Intrusioni - Uno strumento di sicurezza che monitora il traffico di rete per rilevare e bloccare attivamente o prevenire attività dannose.'
+    }
+  },
+  {
+    term: 'NIDS / NIPS',
+    definition: {
+      en: 'Network-based IDS/IPS - Monitors and analyzes traffic from multiple devices on an entire subnet to identify security threats.',
+      it: 'IDS/IPS basato su Rete - Monitora e analizza il traffico proveniente da più dispositivi su un\'intera sottorete per identificare minacce alla sicurezza.'
+    }
+  },
+  {
+    term: 'HIDS / HIPS',
+    definition: {
+      en: 'Host-based IDS/IPS - Installed directly on a specific host or device to monitor internal operating system activities and files.',
+      it: 'IDS/IPS basato su Host - Installato direttamente su un host o dispositivo specifico per monitorare le attività interne del sistema operativo e dei file.'
+    }
+  },
+  {
+    term: 'Firewall',
+    definition: {
+      en: 'A security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.',
+      it: 'Un sistema di sicurezza che monitora e controlla il traffico di rete in entrata e in uscita in base a regole di sicurezza prestabilite.'
+    }
+  },
+  {
+    term: 'Packet Sniffing',
+    definition: {
+      en: 'The practice of gathering, collecting, and logging packets that pass through a computer network, often for diagnostics or malicious interception.',
+      it: 'La pratica di raccogliere ed esaminare i pacchetti che passano attraverso una rete informatica, spesso per scopi diagnostici o per intercettazione dannosa.'
+    }
+  },
+  {
+    term: 'EAP',
+    definition: {
+      en: 'Extensible Authentication Protocol - An authentication framework frequently used in wireless networks and point-to-point links. It supports various authentication methods like EAP-TLS (highly secure, certificate-based), EAP-PEAP, and EAP-TTLS (tunnel-based).',
+      it: 'Extensible Authentication Protocol - Un framework di autenticazione comunemente usato nelle reti wireless (WPA-Enterprise) e nei link punto-punto. Supporta diverse metodologie come EAP-TLS (altamente sicuro, basato su certificati client/server), EAP-PEAP e EAP-TTLS (che creano un tunnel cifrato sicuro prima di autenticare).'
+    }
+  },
+  {
+    term: 'RADIUS',
+    definition: {
+      en: 'Remote Authentication Dial-In User Service - A networking protocol operating on ports 1812/1813 (UDP) that provides centralized Authentication, Authorization, and Accounting (AAA) management for users connecting to a network. It encrypts only the password in the payload.',
+      it: 'Remote Authentication Dial-In User Service - Un protocollo di rete operante sulle porte 1812/1813 (UDP) che gestisce in modo centralizzato Autenticazione, Autorizzazione e Accounting (AAA) per utenti che si connettono alla rete. Cifra solo la password nel payload, lasciando il resto in chiaro.'
+    }
+  },
+  {
+    term: 'TACACS+',
+    definition: {
+      en: 'Terminal Access Controller Access-Control System Plus - A secure TCP-based AAA protocol (Port 49) developed by Cisco. Unlike RADIUS, it completely separates Authentication, Authorization, and Accounting, and encrypts the entire payload body, making it ideal for router/switch administration.',
+      it: 'Terminal Access Controller Access-Control System Plus - Un protocollo sicuro di AAA basato su TCP (Porta 49) sviluppato da Cisco. A differenza di RADIUS, separa completamente Autenticazione, Autorizzazione e Accounting, e cifra l\'intero corpo del payload, rendendolo ideale per l\'amministrazione di router e switch.'
+    }
+  },
+  {
+    term: '802.1X',
+    definition: {
+      en: 'IEEE standard for port-based Network Access Control (PNAC). It provides an authentication mechanism to devices wishing to attach to a LAN or WLAN, using EAP for secure credential exchange.',
+      it: 'Standard IEEE per il controllo dell\'accesso alla rete basato su porta (PNAC). Fornisce un meccanismo di autenticazione per dispositivi che tentano di connettersi a una LAN o WLAN, usando EAP per il transito sicuro delle credenziali.'
+    }
+  },
+  {
+    term: 'AAA',
+    definition: {
+      en: 'Authentication, Authorization, and Accounting - A security framework for controlling user access, enforcing corporate policies, auditing usage, and keeping track of all network activities.',
+      it: 'Authentication, Authorization, and Accounting - Un framework di sicurezza per controllare l\'accesso alle risorse di rete, applicare le policy aziendali, verificare l\'uso e tenere traccia di tutte le attività eseguite.'
+    }
+  },
+  {
+    term: 'TLS',
+    definition: {
+      en: 'Transport Layer Security - A cryptographic protocol designed to provide secure, encrypted end-to-end communications over a computer network (commonly upgrading HTTP to HTTPS).',
+      it: 'Transport Layer Security - Un protocollo crittografico progettato per offrire comunicazioni sicure e cifrate end-to-end su una rete informatica (comunemente usato per aggiornare HTTP in HTTPS).'
+    }
+  },
+  {
+    term: 'WPA3',
+    definition: {
+      en: 'Wi-Fi Protected Access 3 - The latest generation of wireless security standards, providing stronger encryption (using SAE handshakes) and elevated protection against offline brute force attempts.',
+      it: 'Wi-Fi Protected Access 3 - L\'ultima generazione di standard di sicurezza wireless, che offre una crittografia più solida (tramite handshake SAE) e una maggiore protezione contro gli attacchi bruteforce offline.'
+    }
+  },
+  {
+    term: 'AES',
+    definition: {
+      en: 'Advanced Encryption Standard - A symmetric-key block cipher algorithm chosen by the US government and established globally to protect sensitive data across communications and storage.',
+      it: 'Advanced Encryption Standard - Un algoritmo di crittografia simmetrica a blocchi scelto dal governo degli Stati Uniti e adottato globalmente per proteggere e cifrare dati sensibili in transito o archiviati.'
+    }
+  },
+  {
+    term: 'OSI Model',
+    definition: {
+      en: 'Open Systems Interconnection Model - A theoretical framework of 7 conceptual layers developed by the ISO to standardize and partition network telecommunication functions.',
+      it: 'Modello OSI (Open Systems Interconnection) - Una struttura teorica a 7 livelli concettuali sviluppata dall\'ISO per standardizzare e ripartire le funzioni di telecomunicazione e di rete.'
+    }
+  },
+  {
+    term: 'MAC Address',
+    definition: {
+      en: 'Media Access Control Address - A unique 48-bit physical hardware identifier burned into a network interface card (NIC) used for local Layer 2 frame routing.',
+      it: 'Indirizzo MAC - Un identificativo fisico univoco a 48 bit registrato direttamente sulla scheda di rete (NIC) usato per l\'instradamento dei frame a livello locale (Livello 2).'
+    }
+  },
+  {
+    term: 'IP Address',
+    definition: {
+      en: 'Internet Protocol Address - A logical numeric label assigned to each device participating in a computer network that uses the Internet Protocol for routing packets (Layer 3).',
+      it: 'Indirizzo IP - Un\'etichetta numerica logica assegnata a ciascun dispositivo connesso a una rete che utilizza il protocollo IP per instradare e recapitare i pacchetti (Livello 3).'
+    }
+  },
+  {
+    term: 'TCP',
+    definition: {
+      en: 'Transmission Control Protocol - A reliable, connection-oriented, flow-controlled Transport layer (Layer 4) protocol that ensures ordered delivery of byte streams.',
+      it: 'Transmission Control Protocol - Un protocollo di livello Transport (Livello 4) orientato alla connessione, affidabile e con controllo di flusso, che garantisce la consegna ordinata e priva di errori dei dati.'
+    }
+  },
+  {
+    term: 'UDP',
+    definition: {
+      en: 'User Datagram Protocol - A simple, faster, connectionless Transport layer (Layer 4) protocol used for speed-centric and low-latency transmissions without packet loss recovery guarantees.',
+      it: 'User Datagram Protocol - Un protocollo di livello Transport (Livello 4) non orientato alla connessione, leggero e ultra-veloce, ottimizzato per trasmissioni a bassa latenza senza garanzie di recupero dei pacchetti.'
+    }
+  },
+  {
+    term: 'HTTP',
+    definition: {
+      en: 'Hypertext Transfer Protocol - An unencrypted Application layer (Layer 7) protocol used broadly on the web to request and fetch documents or resources (defaulting to Port 80).',
+      it: 'Hypertext Transfer Protocol - Un protocollo non crittografato di livello Applicazione (Livello 7) ampiamente usato sul web per la richiesta e il recupero di documenti o risorse (porta predefinita 80).'
+    }
+  },
+  {
+    term: 'HTTPS',
+    definition: {
+      en: 'Hypertext Transfer Protocol Secure - An extension of HTTP using TLS encryption to secure the communication channel, encrypting URLs, headers, and payloads on Port 443.',
+      it: 'Hypertext Transfer Protocol Secure - Un\'estensione sicura di HTTP che utilizza la crittografia TLS per proteggere il canale di comunicazione, cifrando URL, intestazioni e payload sulla porta 443.'
+    }
+  },
+  {
+    term: 'SQL Injection',
+    definition: {
+      en: 'SQLi - An Application layer attack where malicious SQL strings are injected into input fields, manipulating raw queries on the back-end database directly to leak or damage tables.',
+      it: 'SQL Injection - Un attacco a livello applicativo in cui query SQL alterate vengono iniettate nei campi di input, spingendo il database server a eseguire comandi non autorizzati per estrarre o alterare dati.'
+    }
+  },
+  {
+    term: 'Cross-Site Scripting',
+    definition: {
+      en: 'XSS - A vulnerability where an attacker injects malicious scripts (often JavaScript) into web pages viewed by other users, allowing session cookie theft or interface manipulation.',
+      it: 'Cross-Site Scripting - Una vulnerabilità in cui l\'attaccante inietta script malevoli (spesso JavaScript) all\'interno di pagine web visitate da altri utenti, consentendo il furto di cookie di sessione.'
+    }
+  },
+  {
+    term: 'uRPF',
+    definition: {
+      en: 'Unicast Reverse Path Forwarding - A network routing security tool that mitigates IP spoofing by checking if the source address of an incoming packet matches return routing table paths.',
+      it: 'Unicast Reverse Path Forwarding - Una tecnologia di sicurezza dei router per mitigare l\'IP spoofing, che verifica se l\'indirizzo IP sorgente del pacchetto in arrivo coincide storicamente con l\'interfaccia di ritorno ottimale.'
+    }
+  },
+  {
+    term: 'DAI',
+    definition: {
+      en: 'Dynamic ARP Inspection - A switch hardware security feature that intercepts and validates ARP packets in local subnets, dropping unauthorized gratuitous replies to prevent Man-in-the-Middle attacks.',
+      it: 'Dynamic ARP Inspection - Una funzionalità di sicurezza degli switch che intercetta e convalida le risposte ARP in una rete locale, scartando pacchetti gratuitous non autorizzati per impedire attacchi MitM.'
+    }
+  },
+  {
+    term: 'Punycode',
+    definition: {
+      en: 'A representation system that translates Internationalized Domain Names (IDNs) containing Unicode characters into safe basic ASCII strings prefixed with "xn--" for DNS queries.',
+      it: 'Un sistema di codifica che converte i Nomi di Dominio Internazionalizzati (IDN) contenenti caratteri speciali Unicode in stringhe ASCII standard che iniziano con "xn--", utilizzabili dal DNS.'
+    }
+  },
+  {
+    term: 'CSP',
+    definition: {
+      en: 'Content Security Policy - An HTTP header that restricts what dynamic script or style resources browsers are allowed to run, serving as a powerful layer of defense against XSS attacks.',
+      it: 'Content Security Policy - Un\'intestazione HTTP che indica quali risorse dinamiche di script o fogli di stile il browser è autorizzato a eseguire per quella pagina, riducendo drasticamente il rischio di XSS.'
+    }
+  },
+  {
+    term: 'AEAD',
+    definition: {
+      en: 'Authenticated Encryption with Associated Data - Encryption modes (like AES-GCM) that guarantee both data confidentiality and cryptographic payload integrity simultaneously, blocking padding tampering.',
+      it: 'Authenticated Encryption with Associated Data - Modalità cifrate (es. AES-GCM) che garantiscono contemporaneamente la riservatezza e l\'integrità del payload, prevenendo la manipolazione delle eccezioni di padding.'
     }
   }
 ];

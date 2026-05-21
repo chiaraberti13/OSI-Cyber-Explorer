@@ -547,7 +547,7 @@ export default function PacketSimulator() {
               <option value="none">{language === 'en' ? '-- Select Attack Scenario --' : '-- Seleziona Scenario di Attacco --'}</option>
               {ATTACK_SCENARIOS.map(scenario => (
                 <option key={scenario.id} value={scenario.id}>
-                  L{scenario.targetLayer}: {scenario.name[language]}
+                  {scenario.name[language]}
                 </option>
               ))}
             </select>

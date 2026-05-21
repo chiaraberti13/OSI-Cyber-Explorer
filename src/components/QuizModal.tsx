@@ -9,21 +9,16 @@ interface QuizModalProps {
   onClose: () => void;
 }
 
-export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
+export default function QuizModal({ isOpen = false, onClose = () => {}, inline = false }: { isOpen?: boolean; onClose?: () => void; inline?: boolean }) {
   const { language, quizScore, incrementQuizScore, resetQuizScore } = useStore();
-  const [sessionQuestions, setSessionQuestions] = useState<typeof QUIZ_QUESTIONS>([]);
+  const [sessionQuestions, setSessionQuestions] = useState<typeof QUIZ_QUESTIONS>(() => {
+    const shuffled = [...QUIZ_QUESTIONS].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 5);
+  });
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
-
-  // Initialize random questions when modal opens
-  React.useEffect(() => {
-    if (isOpen && !quizFinished && currentQuestion === 0 && selectedOption === null) {
-      const shuffled = [...QUIZ_QUESTIONS].sort(() => 0.5 - Math.random());
-      setSessionQuestions(shuffled.slice(0, 5));
-    }
-  }, [isOpen]);
 
   const handleOptionSelect = (index: number) => {
     if (selectedOption !== null || sessionQuestions.length === 0) return;
@@ -63,25 +58,59 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
     return { en: 'Junior Technician', it: 'Tecnico Junior' };
   };
 
-  if (isOpen && sessionQuestions.length === 0) return null;
+  if (sessionQuestions.length === 0) {
+    if (inline) {
+      return (
+        <div className="relative bg-white rounded-3xl border border-slate-200 flex items-center justify-center w-full h-[82vh] min-h-[600px] shadow-sm">
+          <div className="text-center p-6 space-y-4">
+            <div className="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-600 mx-auto animate-bounce animate-duration-1000">
+              <GraduationCap className="w-6 h-6" />
+            </div>
+            <div className="text-sm font-semibold text-slate-500">
+              {language === 'en' ? 'Loading Quiz...' : 'Caricamento Quiz...'}
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  }
 
-  return (
-    <AnimatePresence>
-      {isOpen && sessionQuestions.length > 0 && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-white rounded-3xl shadow-2xl z-[111] flex flex-col overflow-hidden w-full max-w-2xl h-auto max-h-[90vh] border border-slate-100"
-          >
+  const renderWrapper = (children: React.ReactNode) => {
+    if (inline) {
+      return (
+        <div className="relative bg-white rounded-3xl border border-slate-200 flex flex-col overflow-hidden w-full h-[82vh] min-h-[600px] shadow-sm">
+          {children}
+        </div>
+      );
+    }
+    return (
+      <AnimatePresence>
+        {isOpen && sessionQuestions.length > 0 && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white rounded-3xl shadow-2xl z-[111] flex flex-col overflow-hidden w-full max-w-2xl h-auto max-h-[90vh] border border-slate-100"
+            >
+              {children}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    );
+  };
+
+  return renderWrapper(
+    <>
             {/* Header */}
             <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-white sticky top-0">
               <div className="flex items-center gap-3">
@@ -90,7 +119,7 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-slate-900">
-                    {language === 'en' ? 'Networking Academy' : 'Accademia delle Reti'}
+                    {language === 'en' ? 'Quiz' : 'Quiz'}
                   </h2>
                   <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">
                     {quizFinished 
@@ -99,12 +128,14 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                   </p>
                 </div>
               </div>
-              <button 
-                onClick={onClose}
-                className="p-2 hover:bg-slate-100 rounded-xl transition-colors text-slate-400 hover:text-slate-600"
-              >
-                <X className="w-6 h-6" />
-              </button>
+              {!inline && (
+                <button 
+                  onClick={onClose}
+                  className="p-2 hover:bg-slate-100 rounded-xl transition-colors text-slate-400 hover:text-slate-600"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              )}
             </div>
 
             <div className="flex-1 overflow-y-auto p-8">
@@ -198,18 +229,15 @@ export default function QuizModal({ isOpen, onClose }: QuizModalProps) {
                       {language === 'en' ? 'Retake Quiz' : 'Rifai il Quiz'}
                     </button>
                     <button
-                      onClick={onClose}
+                      onClick={inline ? () => useStore.getState().setActiveView('osi') : onClose}
                       className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all"
                     >
-                      {language === 'en' ? 'Close Academy' : 'Chiudi Accademia'}
+                      {inline ? (language === 'en' ? 'Back to OSI Lab' : 'Torna al Lab OSI') : (language === 'en' ? 'Close Quiz' : 'Chiudi Quiz')}
                     </button>
                   </div>
                 </div>
               )}
             </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
+    </>
   );
 }

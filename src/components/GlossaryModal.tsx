@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Search, BookOpen } from 'lucide-react';
 import { GLOSSARY_TERMS } from '../constants';
 import { useStore } from '../store';
-import { useState } from 'react';
 
 interface GlossaryModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function GlossaryModal({ isOpen, onClose }: GlossaryModalProps) {
+export default function GlossaryModal({ isOpen = false, onClose = () => {}, inline = false }: { isOpen?: boolean; onClose?: () => void; inline?: boolean }) {
   const { language } = useStore();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -18,23 +18,41 @@ export default function GlossaryModal({ isOpen, onClose }: GlossaryModalProps) {
     item.definition[language].toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-white rounded-3xl shadow-2xl z-[101] flex flex-col overflow-hidden w-full max-w-2xl h-auto max-h-[85vh] border border-slate-100"
-          >
+  const renderWrapper = (children: React.ReactNode) => {
+    if (inline) {
+      return (
+        <div className="relative bg-white rounded-3xl border border-slate-200 flex flex-col overflow-hidden w-full h-[82vh] min-h-[600px] shadow-sm">
+          {children}
+        </div>
+      );
+    }
+    return (
+      <AnimatePresence>
+        {isOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white rounded-3xl shadow-2xl z-[101] flex flex-col overflow-hidden w-full max-w-2xl h-auto max-h-[85vh] border border-slate-100"
+            >
+              {children}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    );
+  };
+
+  return renderWrapper(
+    <>
             {/* Header */}
             <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-white sticky top-0">
               <div className="flex items-center gap-3">
@@ -50,12 +68,14 @@ export default function GlossaryModal({ isOpen, onClose }: GlossaryModalProps) {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={onClose}
-                className="p-2 hover:bg-slate-50 rounded-full transition-colors"
-              >
-                <X className="w-5 h-5 text-slate-400" />
-              </button>
+              {!inline && (
+                <button
+                  onClick={onClose}
+                  className="p-2 hover:bg-slate-50 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5 text-slate-400" />
+                </button>
+              )}
             </div>
 
             {/* Search Bar */}
@@ -106,9 +126,6 @@ export default function GlossaryModal({ isOpen, onClose }: GlossaryModalProps) {
                 OSI Model Educational Tool • 2024
               </p>
             </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
+    </>
   );
 }
