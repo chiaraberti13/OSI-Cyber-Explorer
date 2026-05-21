@@ -268,6 +268,83 @@ const severityConfig: Record<Severity, { label: string; color: string; bg: strin
   critical: { label: 'CRITICAL', color: '#b91c1c', bg: 'bg-red-50',    border: 'border-red-200' },
 };
 
+const TUTOR_CORNER: Record<number, {
+  analogy: { en: string; it: string };
+  commands: { description: string; code: string }[];
+}> = {
+  7: {
+    analogy: {
+      en: "Like reading the actual content and requests inside a letter (e.g., 'Deliver 1 hot coffee' or 'Query room 42 balance').",
+      it: "Come leggere il contenuto reale e le richieste scritte in una lettera (es. 'Consegna 1 caffè caldo' o 'Richiedi il saldo della stanza 42')."
+    },
+    commands: [
+      { description: "Inspect HTTP headers in real-time", code: "curl -Iv https://httpbin.org/get" },
+      { description: "Resolve DNS record diagnostic fields", code: "dig +short A google.com" }
+    ]
+  },
+  6: {
+    analogy: {
+      en: "Translating words into a common language (English/Italian) or encrypting/compressing the letter inside a safe before sealing it.",
+      it: "Tradurre le parole in una lingua comune (inglese/italiano) o crittografare/comprimere la lettera in una cassaforte prima di spedirla."
+    },
+    commands: [
+      { description: "Check TLS handshake & TLS certificate chain details", code: "openssl s_client -connect google.com:443" },
+      { description: "Verify payload JSON content-type parsing", code: "curl -H 'Content-Type: application/json'" }
+    ]
+  },
+  5: {
+    analogy: {
+      en: "Setting up a phone call session, verifying identities with badges, keeping the line open, and cleanly logging off when finished.",
+      it: "Stabilire una chiamata telefonica attiva, verificare le identità, tenere aperta la linea e riagganciare in modo ordinato al termine."
+    },
+    commands: [
+      { description: "Check current active state authentication cookies", code: "document.cookie" },
+      { description: "List established RPC sessions & database handles", code: "netstat -an | grep 5432" }
+    ]
+  },
+  4: {
+    analogy: {
+      en: "Registered Mail (TCP) guaranteeing order & receipt verification, OR quick Postcards (UDP) sent without delivery guarantees or retries.",
+      it: "Posta Raccomandata (TCP) con ricevuta che garantisce ordine e recapito, OPPURE una cartolina veloce (UDP) spedita senza tracciamento."
+    },
+    commands: [
+      { description: "Check if a remote service port socket is open & listening", code: "nc -zv 192.168.1.1 443" },
+      { description: "Display all active local network ports & sockets", code: "ss -tulnp" }
+    ]
+  },
+  3: {
+    analogy: {
+      en: "Sorting packages globally at the national post office using Postal ZIP codes / IP addresses to route packages from country to country.",
+      it: "Smistare i pacchi su scala mondiale scrivendo gli indirizzi IP / Codici Postali per instradare le lettere da nazione a nazione."
+    },
+    commands: [
+      { description: "Trace hops and route paths across autonomous routers", code: "traceroute 8.8.8.8" },
+      { description: "Check standard reachability and routing roundtrip latency", code: "ping -c 4 8.8.8.8" },
+      { description: "Examine system network gateway routing tables", code: "ip route show" }
+    ]
+  },
+  2: {
+    analogy: {
+      en: "Handing an envelope by hand to a specific office room number (MAC address) on the exact same floor of your current building.",
+      it: "Consegnare a mano la busta a un numero di stanza specifico (indirizzo MAC) situato sullo stesso piano dell'edificio locale."
+    },
+    commands: [
+      { description: "Inspect the local IP-to-MAC hardware resolution map", code: "arp -a" },
+      { description: "See current interface Layer-2 hardware MAC details", code: "ip link show" }
+    ]
+  },
+  1: {
+    analogy: {
+      en: "The copper wires, physical optical fibers, radio frequency sparks, or connectors carrying simple raw electrical/light binary pulses (0 and 1).",
+      it: "I cavi in rame, i filamenti di fibra ottica, le onde radio o le tensioni elettriche che trasmettono impulsi di bit binari (0 e 1)."
+    },
+    commands: [
+      { description: "Inspect physical link speed, auto-negotiation, and cable light indicators", code: "ethtool eth0" },
+      { description: "Check physical cable carrier & transceiver drops", code: "cat /sys/class/net/eth0/carrier" }
+    ]
+  }
+};
+
 function AttackCard({ attack }: { attack: Attack }) {
   const [expanded, setExpanded] = useState(true);
   const sev = severityConfig[attack.severity];
@@ -786,6 +863,44 @@ export default function LayerDetails() {
                         </div>
                       </div>
                     </section>
+
+                    {selectedLayerId && TUTOR_CORNER[selectedLayerId] && (
+                      <section className="p-4 bg-indigo-50/30 border border-indigo-100 rounded-2xl space-y-4 animate-in fade-in duration-300">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-indigo-600 text-white font-mono text-[10px] font-black flex items-center justify-center shadow-md shadow-indigo-100">
+                            T
+                          </div>
+                          <h4 className="text-[10px] font-black text-indigo-700 uppercase tracking-wider">
+                            {language === 'it' ? "L'Angolo del Tutor" : "Tutor's Corner"}
+                          </h4>
+                        </div>
+                        
+                        <div className="space-y-1">
+                          <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest block">
+                            {language === 'it' ? "Analogia Pratica" : "Practical Analogy"}
+                          </span>
+                          <p className="text-[11px] text-slate-600 leading-relaxed italic pr-2">
+                            "{TUTOR_CORNER[selectedLayerId].analogy[language]}"
+                          </p>
+                        </div>
+
+                        <div className="space-y-2 border-t border-indigo-100/40 pt-3">
+                          <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest block">
+                            {language === 'it' ? "Diagnostica Reale / Comandi Consigliati" : "Field Diagnostics / CLI Commands"}
+                          </span>
+                          <div className="space-y-2">
+                            {TUTOR_CORNER[selectedLayerId].commands.map((cmd, i) => (
+                              <div key={i} className="space-y-1">
+                                <span className="text-[9px] text-slate-500 font-semibold block">{cmd.description}</span>
+                                <div className="p-2.5 bg-slate-900 border border-slate-950 rounded-xl text-indigo-300 font-mono text-[10px] select-all break-all shadow-md">
+                                  {cmd.code}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </section>
+                    )}
                   </motion.div>
                 )}
 

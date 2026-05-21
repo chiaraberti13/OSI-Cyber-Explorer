@@ -1839,7 +1839,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Transport (L4)", it: "Trasporto (L4)" },
       { en: "Application (L7)", it: "Applicazione (L7)" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "The Network Layer (L3) manages logical addressing (IP addresses) and routes packets across diverse networks to reach their destination.",
+      it: "Il livello Network (L3) gestisce l'indirizzamento logico (IP) e decide il percorso migliore (routing) che i pacchetti devono seguire per raggiungere la destinazione."
+    }
   },
   {
     id: 2,
@@ -1853,7 +1857,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Managing session dialogues", it: "Gestione dei dialoghi di sessione" },
       { en: "Formatting data for the user", it: "Formattazione dei dati per l'utente" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "The Transport Layer (L4) ensures end-to-end reliability, flow control, and error recovery using protocols like TCP.",
+      it: "Il livello Trasporto (L4) è responsabile del trasferimento affidabile dei dati end-to-end, del controllo di flusso e della correzione degli errori (es. TCP)."
+    }
   },
   {
     id: 3,
@@ -1867,7 +1875,11 @@ export const QUIZ_QUESTIONS = [
       { en: "SSH", it: "SSH" },
       { en: "SMTP", it: "SMTP" }
     ],
-    correctAnswer: 2
+    correctAnswer: 2,
+    explanation: {
+      en: "SSH (Secure Shell) provides robust encryption for secure terminal sessions, completely replacing cleartext legacy protocols like Telnet.",
+      it: "SSH (Secure Shell) offre un canale cifrato sicuro per sessioni di terminale remoto, rimpiazzando protocolli insicuri e in chiaro come Telnet."
+    }
   },
   {
     id: 4,
@@ -1881,7 +1893,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Layer 3", it: "Livello 3" },
       { en: "Layer 2", it: "Livello 2" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "SYN Floods exploit the TCP three-way handshake queue (SYN backlog) at Layer 4 (Transport), exhausting host socket resources.",
+      it: "Il SYN Flood sfrutta la coda degli handshake parziali TCP (SYN backlog) a livello 4 (Trasporto), esaurendo le risorse di socket dell'host."
+    }
   },
   {
     id: 5,
@@ -1895,7 +1911,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Cryptographic authentication of DNS records", it: "Autenticazione crittografica dei record DNS" },
       { en: "Automatic IP address assignment", it: "Assegnazione automatica di indirizzi IP" }
     ],
-    correctAnswer: 2
+    correctAnswer: 2,
+    explanation: {
+      en: "DNSSEC signs DNS records cryptographically so that clients can verify the authentic mapping of domains without sniffing, spoofing, or redirection hazards.",
+      it: "DNSSEC firma digitalmente i record DNS per consentire la verifica di integrità e autenticità, prevenendo dirottamenti e risposte fasulle."
+    }
   },
   {
     id: 6,
@@ -1909,7 +1929,11 @@ export const QUIZ_QUESTIONS = [
       { en: "BGP", it: "BGP" },
       { en: "DHCP", it: "DHCP" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "DNS (Domain Name System) functions at Layer 7 to map human-readable hostnames to numeric IP addresses.",
+      it: "Il DNS (Domain Name System) opera a livello 7 per risolvere i nomi di dominio leggibili in indirizzi IP numerici."
+    }
   },
   {
     id: 7,
@@ -1923,7 +1947,11 @@ export const QUIZ_QUESTIONS = [
       { en: "23", it: "23" },
       { en: "80", it: "80" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "Port 22 is globally reserved by IANA for Secure Shell (SSH) connections by default.",
+      it: "La porta standard IANA assegnata di default alle connessioni crittografate SSH (Secure Shell) è la porta 22."
+    }
   },
   {
     id: 8,
@@ -1937,7 +1965,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Layer 3", it: "Livello 3" },
       { en: "Layer 4", it: "Livello 4" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "Ethernet switches operate primarily at the Data Link Layer (L2) to inspect destination MAC addresses and forward frames accordingly.",
+      it: "Gli switch Ethernet lavorano al livello Data Link (L2), analizzando gli indirizzi MAC di destinazione per inoltrare i frame selettivamente."
+    }
   },
   {
     id: 9,
@@ -1951,7 +1983,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Multi-Tasking Utility", it: "Multi-Tasking Utility" },
       { en: "Modern Telemetry Unit", it: "Modern Telemetry Unit" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "Maximum Transmission Unit (MTU) represents the largest physical packet size (usually 1500 bytes on standard Ethernet) that a medium can traverse without fragmentation.",
+      it: "La Maximum Transmission Unit (MTU) rappresenta la dimensione massima (es. 1500 byte in Ethernet) che un pacchetto può avere per viaggiare sul mezzo fisico senza frammentarsi."
+    }
   },
   {
     id: 10,
@@ -1965,7 +2001,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Port Number", it: "Numero di Porta" },
       { en: "AS Number", it: "Numero AS" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "Ethernet networks rely on physical 48-bit MAC addresses burned into Network Interface Cards relative to Layer 2.",
+      it: "Le reti locali usano gli indirizzi MAC fisici a 48 bit cablati direttamente nelle schede di rete (NIC) per l'instradamento di livello 2."
+    }
   },
   {
     id: 11,
@@ -1979,7 +2019,11 @@ export const QUIZ_QUESTIONS = [
       { en: "SQL Injection", it: "SQL Injection" },
       { en: "Phishing", it: "Phishing" }
     ],
-    correctAnswer: 0
+    correctAnswer: 0,
+    explanation: {
+      en: "Man-In-The-Middle (MITM) occurs when an attacker transparently intercepts, relays, or alters communication between two legitimate endpoints.",
+      it: "Si definisce Man-In-The-Middle (MITM) quando un hacker intercetta, inoltra o altera segretamente le informazioni tra due macchine che credono di comunicare direttamente."
+    }
   },
   {
     id: 12,
@@ -1993,7 +2037,11 @@ export const QUIZ_QUESTIONS = [
       { en: "BGP", it: "BGP" },
       { en: "ICMP", it: "ICMP" }
     ],
-    correctAnswer: 2
+    correctAnswer: 2,
+    explanation: {
+      en: "BGP (Border Gateway Protocol) is the exterior gateway protocol that coordinates routing topologies globally among Autonomous Systems (AS) on the internet.",
+      it: "Il protocollo BGP (Border Gateway Protocol) è lo standard di routing esterno che unisce e sincronizza le tabelle di instradamento mondiali tra gli Autonomous Systems (AS)."
+    }
   },
   {
     id: 13,
@@ -2007,7 +2055,11 @@ export const QUIZ_QUESTIONS = [
       { en: "EAP-TLS (Dual certificate verification)", it: "EAP-TLS (Certificati digitali su ambo i lati)" },
       { en: "EAP-FAST (Cisco Shared PAC tunnel)", it: "EAP-FAST (Tunnel Cisco con chiave PAC)" }
     ],
-    correctAnswer: 2
+    correctAnswer: 2,
+    explanation: {
+      en: "EAP-TLS is the gold standard because it demands mutual cryptographic certificate verification on both client (supplicant) and server sides.",
+      it: "EAP-TLS è il protocollo più robusto poiché richiede l'autenticazione crittografica e lo scambio di certificati digitali X.509 validi sia sul client che sul server."
+    }
   },
   {
     id: 14,
@@ -2021,7 +2073,11 @@ export const QUIZ_QUESTIONS = [
       { en: "RADIUS is Cisco-proprietary, while TACACS+ is an open standard suited for general client access", it: "RADIUS è un protocollo proprietario Cisco, mentre TACACS+ è uno standard aperto per l'accesso client classico" },
       { en: "TACACS+ operates at the Physical layer (L1) while RADIUS operates at the Session layer (L5)", it: "TACACS+ opera a livello Fisico (L1) mentre RADIUS opera a livello Sessione (L5)" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "TACACS+ completely encrypts everything but the packet header, uses reliable TCP, and decouples AAA operations; RADIUS combines Autentication/Authorization and only encrypts passwords inside UDP.",
+      it: "TACACS+ cifra interamente il corpo del pacchetto, usa l'affidabilità di TCP e separa nettamente le fasi AAA; RADIUS unisce Autenticazione/Autorizzazione e cifra unicamente la password su UDP."
+    }
   },
   {
     id: 15,
@@ -2030,12 +2086,16 @@ export const QUIZ_QUESTIONS = [
       it: "Perché il DTLS (Datagram Transport Layer Security) è spesso preferito al TLS all'interno delle VPN client?"
     },
     options: [
-      { en: "It completely skips packet integrity hashing verification steps", it: "Salta completamente i controlli di integrità del pacchetto" },
+      { en: "It completely skips packet integrity hashing verification steps", it: "Salta completamente i controles di integrità del pacchetto" },
       { en: "It integrates directly into physical fiber optic couplers", it: "Si integra direttamente nei connettori fisici in fibra ottica" },
       { en: "It encapsulates data over UDP, preventing latency spikes and TCP-in-TCP retransmission loops of nested tunnels", it: "Invia i dati su UDP, eliminando la latenza e i loop di re-invio causati dal sovrapporre un protocollo TCP sopra un altro (TCP-in-TCP)" },
       { en: "It acts purely as a routing mechanism and cannot encrypt", it: "Agisce puramente come organo di routing e non esegue cifratura" }
     ],
-    correctAnswer: 2
+    correctAnswer: 2,
+    explanation: {
+      en: "Because DTLS encapsulates transit data over UDP. Nesting TCP payload streams inside a TCP tunnel triggers catastrophic timing delays (TCP Meltdown/retransmission loops) when transport packets are dropped.",
+      it: "Perché il DTLS veicola i dati di transito su UDP. Se si incapsula del traffico TCP dentro un tunnel anch'esso TCP, la perdita di pacchetti causa loop infiniti di re-invio e blocchi di rete ('TCP Meltdown')."
+    }
   },
   {
     id: 16,
@@ -2049,7 +2109,11 @@ export const QUIZ_QUESTIONS = [
       { en: "Pass-Through Mode (No active payload encryption)", it: "Modalità Passante (Nessuna cifratura attiva)" },
       { en: "Gateway Mode (Compresses header without signatures)", it: "Modalità Gateway (Comprime l'intestazione senza firma)" }
     ],
-    correctAnswer: 1
+    correctAnswer: 1,
+    explanation: {
+      en: "Tunnel Mode encrypts the entire original IP packet (header + payload) and prefixes a completely new outer IP header, making it perfect for connecting network gateways in Site-to-Site office tunnels.",
+      it: "La modalità Tunnel cifra il pacchetto IP di origine nella sua interezza (sia l'intestazione originaria sia i dati) e vi aggiunge un'intestazione IP esterna protettiva, ideale nei collegamenti stabili Site-to-Site."
+    }
   }
 ];
 

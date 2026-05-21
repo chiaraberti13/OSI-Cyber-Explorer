@@ -173,21 +173,41 @@ export default function QuizModal({ isOpen = false, onClose = () => {}, inline =
                   </div>
 
                   {showResult && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex justify-end"
-                    >
-                      <button
-                        onClick={nextQuestion}
-                        className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all"
+                    <div className="space-y-4">
+                      <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex gap-3 text-left shadow-sm animate-in fade-in zoom-in-95 duration-200"
                       >
-                        {currentQuestion === sessionQuestions.length - 1 
-                          ? (language === 'en' ? 'View Results' : 'Vedi Risultati')
-                          : (language === 'en' ? 'Next Question' : 'Prossima Domanda')}
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    </motion.div>
+                        <div className="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center flex-shrink-0 text-white font-mono text-xs font-black shadow-md shadow-indigo-100">
+                          T
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-black uppercase text-indigo-700 tracking-wider">
+                            {language === 'en' ? "Tutor's Explanation" : "Spiegazione del Tutor"}
+                          </span>
+                          <p className="text-xs text-slate-700 font-medium leading-relaxed">
+                            {sessionQuestions[currentQuestion]?.explanation?.[language]}
+                          </p>
+                        </div>
+                      </motion.div>
+
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex justify-end"
+                      >
+                        <button
+                          onClick={nextQuestion}
+                          className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all"
+                        >
+                          {currentQuestion === sessionQuestions.length - 1 
+                            ? (language === 'en' ? 'View Results' : 'Vedi Risultati')
+                            : (language === 'en' ? 'Next Question' : 'Prossima Domanda')}
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                      </motion.div>
+                    </div>
                   )}
                 </div>
               ) : (
