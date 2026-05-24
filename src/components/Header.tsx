@@ -1,9 +1,11 @@
 import { useStore } from '../store';
+import { BookOpen } from 'lucide-react';
 
 export default function Header() {
   const { 
     language, 
-    setLanguage
+    setLanguage,
+    setIsGuideOpen
   } = useStore();
 
   return (
@@ -24,7 +26,15 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
+          <button
+            onClick={() => setIsGuideOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white rounded-lg text-[9px] font-bold uppercase tracking-wider hover:bg-slate-800 active:scale-[0.98] transition-all shadow-sm"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>{language === 'it' ? 'Guida del Lab' : 'Lab Guide'}</span>
+          </button>
+
           <div className="flex bg-slate-50 p-0.5 rounded-lg border border-slate-200">
             <button
               onClick={() => setLanguage('en')}

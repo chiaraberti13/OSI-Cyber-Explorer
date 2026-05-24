@@ -46,18 +46,31 @@ export default function GuideModal({ isOpen, onClose, language }: GuideModalProp
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             className="relative bg-white border border-slate-100 rounded-3xl md:rounded-[2.5rem] p-6 md:p-10 max-w-2xl w-full shadow-2xl overflow-y-auto max-h-[85vh] m-auto"
           >
-            <button onClick={onClose} className="absolute top-4 right-4 md:top-8 md:right-8 text-slate-400 hover:text-slate-900 transition-colors p-2 hover:bg-slate-50 rounded-full z-10">
+            <button onClick={onClose} className="absolute top-4 right-4 md:top-8 md:right-8 text-slate-100 hover:text-slate-900 transition-colors p-2 hover:bg-slate-50 rounded-full z-20 bg-slate-900/40 md:bg-transparent">
               <X className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
-            <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-10">
-              <div className="bg-emerald-100 p-2 md:p-3 rounded-xl md:rounded-2xl">
-                <BookOpen className="w-6 h-6 md:w-8 md:h-8 text-emerald-600" />
+            {/* Cyberpunk Repository Banner */}
+            <div className="relative w-full h-44 md:h-52 rounded-2xl overflow-hidden mb-6 border border-slate-100 shadow-inner">
+              <img 
+                src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1200&auto=format&fit=crop" 
+                alt="Cyberpunk Lab Terminal" 
+                className="w-full h-full object-cover brightness-[0.75] contrast-[1.15]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent flex items-end p-6">
+                <div>
+                  <span className="text-[9px] font-black uppercase text-indigo-400 tracking-[0.25em] block mb-1">
+                    OSI_CYBER_LAB // SECURITY_REPOSITORY_MANUAL_v2.5
+                  </span>
+                  <h2 className="text-lg md:text-2xl font-black uppercase tracking-tight text-white">
+                    {language === 'en' ? 'Laboratory Directory & Guide' : 'Manuale & Repository di Rete'}
+                  </h2>
+                </div>
               </div>
-              <h2 className="text-xl md:text-3xl font-black text-slate-900 uppercase tracking-tighter">{content.title}</h2>
             </div>
 
-            <div className="grid gap-6 md:gap-8">
+            <div className="grid gap-6 md:gap-8 mt-6">
               {content.steps.map((step, i) => (
                 <div key={i} className="flex gap-4 md:gap-6 group">
                   <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100 group-hover:border-emerald-200 group-hover:bg-emerald-50 transition-colors">
