@@ -1,5 +1,9 @@
 # OSI Cyber Explorer (OSI_LAB)
 
+<p align="center">
+  <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop" alt="OSI Cyber Explorer Banner" width="100%" style="border-radius: 16px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);" />
+</p>
+
 [English](#english) | [Italiano](#italiano)
 
 ---
